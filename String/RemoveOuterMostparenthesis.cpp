@@ -1,5 +1,5 @@
 //LeetCode 1021
-
+//optimal
 class Solution {
 public:
   string removeOuterParentheses(string s) {
@@ -19,5 +19,29 @@ public:
         }
       }
     } return st;
+  }
+  };
+
+
+// better
+
+//LeetCode 1021
+
+class Solution {
+public:
+  string removeOuterParentheses(string s) {
+    string st="";
+   int initial = 0;
+   int final = 0;
+   int start = 0;
+   for(int i=0;i<s.size();i++){
+    if(s[i]=='(') initial++;
+    else final++;
+    if(initial == final){
+         st+=s.substr(start+1,i-start-1);
+    start = i+1;
+    }
+   }
+   return st;
   }
   };
